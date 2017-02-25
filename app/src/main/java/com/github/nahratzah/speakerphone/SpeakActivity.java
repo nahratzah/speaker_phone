@@ -1,13 +1,10 @@
 package com.github.nahratzah.speakerphone;
 
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
-import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -134,10 +131,9 @@ public class SpeakActivity extends AppCompatActivity {
                 default:
                     return false;
                 case EditorInfo.IME_NULL:
-                    if (event.getAction() == KeyEvent.ACTION_DOWN)
-                        /* FALLTHROUGH */;
-                    else
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         return false;
+                    /* FALLTHROUGH */
                 case EditorInfo.IME_ACTION_DONE:
                     speak();
                     return true;
