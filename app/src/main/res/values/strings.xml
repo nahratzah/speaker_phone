@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Speaker Phone</string>
+    <string name="speak_input_hint">Type text here, enter/newline will speak</string>
+    <string name="speak_repeat_button_hint">Repeat Last Sentence (no sentence present)</string>
+</resources>
