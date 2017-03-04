@@ -35,6 +35,7 @@ public class SpeakActivity extends AppCompatActivity {
         input = (EditText) findViewById(R.id.input);
         input.setOnEditorActionListener(new InputEnterHandler());
         input.setOnKeyListener(new InputKeyListener());
+        input.requestFocus();  // Start with focus on text input.
 
         repeatButton = (Button) findViewById(R.id.repeatButton);
 
