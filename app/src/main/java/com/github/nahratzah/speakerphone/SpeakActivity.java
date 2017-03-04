@@ -7,11 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -41,6 +45,28 @@ public class SpeakActivity extends AppCompatActivity {
 
         ttsBundle = new Bundle();
         tts = new TextToSpeech(getApplicationContext(), new TtsReady());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // action with ID action_refresh was selected
+            case R.id.menu_settings:
+                Toast.makeText(this, "Settings is not implemented.", Toast.LENGTH_SHORT)
+                        .show();
+                return true;
+            default:
+                break;
+        }
+
+        return false;
     }
 
     @Override
