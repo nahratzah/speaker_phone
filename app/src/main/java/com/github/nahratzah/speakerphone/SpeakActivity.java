@@ -25,7 +25,7 @@ public class SpeakActivity extends AppCompatActivity {
     private Button repeatButton;
     private TextToSpeech tts;
     private Bundle ttsBundle;
-    private String lastSentence = null;
+    private @Nullable String lastSentence = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class SpeakActivity extends AppCompatActivity {
         try {
             lastSentence = text.toString();
             updateRepeatButton();
-            speakSentence(text);
+            speakSentence(lastSentence);
             text.clear();
         } finally {
             input.endBatchEdit();
@@ -75,10 +75,13 @@ public class SpeakActivity extends AppCompatActivity {
      * Set the text on the repeat button after 'lastSentence' has been updated.
      */
     private void updateRepeatButton() {
-        if (lastSentence.trim().isEmpty())
+        if (lastSentence == null || lastSentence.trim().isEmpty()) {
             repeatButton.setText(R.string.speak_repeat_button_hint);
-        else
+            repeatButton.setEnabled(false);
+        } else {
             repeatButton.setText(lastSentence);
+            repeatButton.setEnabled(true);
+        }
     }
 
     /**
