@@ -9,10 +9,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.nahratzah.speakerphone.R;
 import com.github.nahratzah.speakerphone.db.SpeechButtonDb;
+import com.github.nahratzah.speakerphone.support.TtsEngine;
 
 /**
  * A speech button that stores its configuration in a database, according to a specified key.
@@ -25,6 +25,8 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
     private String label = null;
     @Nullable
     private String key = null;
+
+    private TtsEngine tts;
 
     public ConfigurableSpeechButton(Context context) {
         super(context);
@@ -42,6 +44,7 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
     }
 
     private void init(@Nullable AttributeSet attrs) {
+        tts = TtsEngine.getInstance(getContext());
         setOnClickListener(this);
         setOnLongClickListener(this);
 
@@ -87,8 +90,7 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
     @Override
     public void onClick(View v) {
         if (text != null)
-            Toast.makeText(getContext(), "Speaking: " + text, Toast.LENGTH_LONG)
-                    .show();
+            tts.speak(text, TtsEngine.QUEUE_FLUSH);
         else
             onLongClick(v);
     }

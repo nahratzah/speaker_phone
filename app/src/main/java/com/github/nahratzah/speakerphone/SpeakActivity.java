@@ -1,7 +1,6 @@
 package com.github.nahratzah.speakerphone;
 
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -17,7 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
+import com.github.nahratzah.speakerphone.support.TtsEngine;
 
 public class SpeakActivity extends AppCompatActivity {
     private static final String TAG = SpeakActivity.class.getName();
@@ -27,14 +26,15 @@ public class SpeakActivity extends AppCompatActivity {
 
     private EditText input;
     private Button repeatButton;
-    private TextToSpeech tts;
-    private Bundle ttsBundle;
     private @Nullable String lastSentence = null;
+    private TtsEngine tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speak);
+
+        tts = TtsEngine.getInstance(this);
 
         input = (EditText) findViewById(R.id.input);
         input.setOnEditorActionListener(new InputEnterHandler());
@@ -42,9 +42,6 @@ public class SpeakActivity extends AppCompatActivity {
         input.requestFocus();  // Start with focus on text input.
 
         repeatButton = (Button) findViewById(R.id.repeatButton);
-
-        ttsBundle = new Bundle();
-        tts = new TextToSpeech(getApplicationContext(), new TtsReady());
     }
 
     @Override
@@ -126,31 +123,7 @@ public class SpeakActivity extends AppCompatActivity {
      * @param text The text to speak.
      */
     private void speakSentence(CharSequence text) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            tts.speak(text, TextToSpeech.QUEUE_ADD, ttsBundle, null);
-        } else {
-            final HashMap<String, String> bundleMap = new HashMap<>();
-            for (String key : ttsBundle.keySet())
-                bundleMap.put(key, ttsBundle.getString(key));
-            //noinspection deprecation
-            tts.speak(text.toString(), TextToSpeech.QUEUE_ADD, bundleMap);
-        }
-    }
-
-    private static class TtsReady implements TextToSpeech.OnInitListener {
-        @Override
-        public void onInit(int status) {
-            // XXX need to do something on initialization error or success.
-            switch (status) {
-                default:
-                case TextToSpeech.ERROR:
-                    /* SKIP */
-                    break;
-                case TextToSpeech.SUCCESS:
-                    /* SKIP */
-                    break;
-            }
-        }
+        tts.speak(text);
     }
 
     private class InputEnterHandler implements TextView.OnEditorActionListener {

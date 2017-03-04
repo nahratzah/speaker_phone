@@ -1,10 +1,11 @@
 package com.github.nahratzah.speakerphone;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+
+import com.github.nahratzah.speakerphone.support.TtsEngine;
 
 public class BigButtonActivity extends AppCompatActivity {
     @Override
@@ -14,6 +15,7 @@ public class BigButtonActivity extends AppCompatActivity {
     }
 
     public void dispatchSpeakActivity(View v) {
+        TtsEngine.getInstance(this).stop();  // Remove pending speach.
         startActivity(new Intent(this, SpeakActivity.class));
     }
 }
