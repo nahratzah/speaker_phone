@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -31,6 +32,8 @@ public class SpeakActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speak);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_speak_toolbar);
+        setSupportActionBar(toolbar);
 
         input = (EditText) findViewById(R.id.input);
         input.setOnEditorActionListener(new InputEnterHandler());
