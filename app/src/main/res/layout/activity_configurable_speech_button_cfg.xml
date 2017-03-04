@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.nahratzah.speakerphone.ui.ConfigurableSpeechButtonCfgActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/configurable_speech_button_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/configurable_speech_button_label_hint"
+        android:inputType="text|textAutoCorrect" />
+
+    <EditText
+        android:id="@+id/configurable_speech_button_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/specify_the_text_to_be_spoken_when_pressing_this_button"
+        android:inputType="text|textAutoCorrect|textMultiLine|textImeMultiLine" />
+
+    <Button
+        android:id="@+id/configurable_speech_button_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:onClick="store"
+        android:text="@android:string/ok" />
+
+</LinearLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="ConfigurableSpeechButton">
+        <attr name="key" format="string" />
+    </declare-styleable>
+</resources>

@@ -3,4 +3,7 @@
     <string name="speak_input_hint">Type text here, enter/newline will speak</string>
     <string name="speak_repeat_button_hint">Repeat Last Sentence (no sentence present)</string>
     <string name="menu_settings">Preferences</string>
+    <string name="configurable_speech_button_label_hint">Specify a name for the button</string>
+    <string name="specify_the_text_to_be_spoken_when_pressing_this_button">Specify the text to be spoken when pressing this button</string>
+    <string name="speak_activity_button">Free Form Speaking</string>
 </resources>
