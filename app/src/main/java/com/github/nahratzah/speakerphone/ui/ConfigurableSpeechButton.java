@@ -22,8 +22,6 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
     @Nullable
     private String text = null;
     @Nullable
-    private String label = null;
-    @Nullable
     private String key = null;
 
     private TtsEngine tts;
@@ -77,8 +75,7 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
             try {
                 final SpeechButtonDb.Entity entity = db.getByKey(key);
                 if (entity != null) {
-                    label = entity.label;
-                    this.setText(label);
+                    this.setText(entity.label);
                     text = entity.text;
                 }
             } finally {
