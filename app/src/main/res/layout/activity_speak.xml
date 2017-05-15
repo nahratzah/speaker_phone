@@ -20,7 +20,7 @@
         android:text="@string/speak_repeat_button_hint"
         android:textAllCaps="false" />
 
-    <EditText
+    <com.github.nahratzah.speakerphone.ui.SPEditText
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

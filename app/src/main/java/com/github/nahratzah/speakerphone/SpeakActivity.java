@@ -149,21 +149,9 @@ public class SpeakActivity extends AppCompatActivity {
         public boolean onKey(View v, int keyCode, KeyEvent event) {
             Log.d(TAG, "onKey(" + v + ", " + keyCode + ", " + event + ")");
             switch (keyCode) {
-                case KeyEvent.KEYCODE_C:  // Stop speaking.
-                    if (event.isCtrlPressed() && event.getAction() == KeyEvent.ACTION_UP) {
-                        tts.stop();
-                        return true;
-                    }
-                    break;
                 case KeyEvent.KEYCODE_R:  // Repeat last sentence.
                     if (event.isCtrlPressed() && event.getAction() == KeyEvent.ACTION_UP) {
                         repeatInput(null);
-                        return true;
-                    }
-                    break;
-                case KeyEvent.KEYCODE_U:  // Clear entire line.
-                    if (event.isCtrlPressed() && event.getAction() == KeyEvent.ACTION_UP) {
-                        ((EditText)v).getEditableText().clear();
                         return true;
                     }
                     break;
