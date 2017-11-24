@@ -30,6 +30,8 @@ public class SPEditText extends AppCompatEditText {
         else
             tts = null;
         setOnKeyListener(null);
+
+        this.setRawInputType(0);
     }
 
     public SPEditText(Context context, AttributeSet attrs) {

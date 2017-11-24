@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -39,6 +41,8 @@ public class SpeakActivity extends AppCompatActivity {
         input = (EditText) findViewById(R.id.input);
         input.setOnEditorActionListener(new InputEnterHandler());
         input.setOnKeyListener(new InputKeyListener());
+        input.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        input.setRawInputType(InputType.TYPE_CLASS_TEXT);
         input.requestFocus();  // Start with focus on text input.
 
         repeatButton = (Button) findViewById(R.id.repeatButton);
@@ -130,17 +134,19 @@ public class SpeakActivity extends AppCompatActivity {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
             Log.d(TAG, "onEditorAction(" + v + ", " + actionId + ", " + event + ")");
-            switch (actionId) {
-                default:
-                    return false;
-                case EditorInfo.IME_NULL:
-                    if (event.getAction() != KeyEvent.ACTION_DOWN)
-                        return false;
-                    /* FALLTHROUGH */
-                case EditorInfo.IME_ACTION_DONE:
+            if (event == null) {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
                     speak();
                     return true;
+                }
+            } else if (actionId == EditorInfo.IME_NULL) {
+                if (event.getAction() == KeyEvent.ACTION_UP)
+                    speak();
+                if (event.getAction() == KeyEvent.ACTION_UP || event.getAction() == KeyEvent.ACTION_DOWN)
+                    return true;
             }
+
+            return false;
         }
     }
 

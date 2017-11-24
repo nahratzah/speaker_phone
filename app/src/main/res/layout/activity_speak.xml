@@ -26,7 +26,7 @@
         android:layout_height="match_parent"
         android:ems="10"
         android:hint="@string/speak_input_hint"
-        android:inputType="text|textCapSentences|textAutoCorrect|textMultiLine"
-        android:scrollHorizontally="false" />
+        android:imeOptions="actionDone"
+        android:inputType="text|textCapSentences|textAutoCorrect|textMultiLine" />
 
 </LinearLayout>
