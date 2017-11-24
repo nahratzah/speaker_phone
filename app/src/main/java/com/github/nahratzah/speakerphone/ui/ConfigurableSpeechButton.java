@@ -42,7 +42,7 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
     }
 
     private void init(@Nullable AttributeSet attrs) {
-        tts = TtsEngine.getInstance(getContext());
+        if (!isInEditMode()) tts = TtsEngine.getInstance(getContext());
         setOnClickListener(this);
         setOnLongClickListener(this);
 
@@ -69,7 +69,7 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
 
     private void initLabelAndText() {
         // Load label and text from database.
-        if (key != null) {
+        if (!isInEditMode() && key != null) {
             final SpeechButtonDb.DatabaseRO db = new SpeechButtonDb(getContext()).getReadOnlyDatabase();
             //noinspection TryFinallyCanBeTryWithResources
             try {

@@ -25,7 +25,8 @@ public class TtsEngine {
 
     private TtsEngine(Context ctx) {
         ttsBundle = new Bundle();
-        tts = new TextToSpeech(ctx.getApplicationContext(), new TtsReady());
+        final Context appCtx = ctx.getApplicationContext();
+        tts = new TextToSpeech(appCtx, new TtsReady(appCtx));
     }
 
     /**
@@ -60,13 +61,20 @@ public class TtsEngine {
         tts.stop();
     }
 
-    private static class TtsReady implements TextToSpeech.OnInitListener {
+    private class TtsReady implements TextToSpeech.OnInitListener {
+        private final Context appCtx;
+
+        private TtsReady(Context appCtx) {
+            this.appCtx = appCtx;
+        }
+
         @Override
         public void onInit(int status) {
             // XXX need to do something on initialization error or success.
             switch (status) {
                 default:
                 case TextToSpeech.ERROR:
+//                    appCtx.startActivity(null);  // XXX show error or engine configuration menu?
                     /* SKIP */
                     break;
                 case TextToSpeech.SUCCESS:
