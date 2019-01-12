@@ -7,10 +7,11 @@ import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.GridLayout.LayoutParams;
 import android.view.View;
 
+import com.github.nahratzah.speakerphone.support.AbstractSpeakerPhoneActivity;
 import com.github.nahratzah.speakerphone.support.TtsEngine;
 import com.github.nahratzah.speakerphone.ui.ConfigurableSpeechButton;
 
-public class BigButtonActivity extends AppCompatActivity {
+public class BigButtonActivity extends AbstractSpeakerPhoneActivity {
     /**
      * The root layout of this activity.
      */

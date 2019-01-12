@@ -14,11 +14,12 @@ import android.widget.EditText;
 
 import com.github.nahratzah.speakerphone.R;
 import com.github.nahratzah.speakerphone.db.SpeechButtonDb;
+import com.github.nahratzah.speakerphone.support.AbstractSpeakerPhoneActivity;
 
 import java.io.Closeable;
 import java.util.Objects;
 
-public class ConfigurableSpeechButtonCfgActivity extends AppCompatActivity implements TextWatcher {
+public class ConfigurableSpeechButtonCfgActivity extends AbstractSpeakerPhoneActivity implements TextWatcher {
     public static String DB_KEY = "db_key";
 
     private String key;

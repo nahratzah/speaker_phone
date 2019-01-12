@@ -2,10 +2,8 @@ package com.github.nahratzah.speakerphone;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -18,9 +16,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.nahratzah.speakerphone.support.AbstractSpeakerPhoneActivity;
 import com.github.nahratzah.speakerphone.support.TtsEngine;
 
-public class SpeakActivity extends AppCompatActivity {
+public class SpeakActivity extends AbstractSpeakerPhoneActivity {
     private static final String TAG = SpeakActivity.class.getName();
 
     /** Bundle String key: the value of lastSentence. */
