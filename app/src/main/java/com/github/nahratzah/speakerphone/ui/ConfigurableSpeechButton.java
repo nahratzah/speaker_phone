@@ -60,6 +60,16 @@ public class ConfigurableSpeechButton extends AppCompatButton implements View.On
         initLabelAndText();
     }
 
+    @Nullable
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(@Nullable String key) {
+        this.key=key;
+        initLabelAndText();
+    }
+
     // Hook into onLayout callback to respond to database updates.
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
