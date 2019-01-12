@@ -2,7 +2,6 @@ package com.github.nahratzah.speakerphone;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.GridLayout.LayoutParams;
 import android.view.View;
@@ -10,6 +9,8 @@ import android.view.View;
 import com.github.nahratzah.speakerphone.support.AbstractSpeakerPhoneActivity;
 import com.github.nahratzah.speakerphone.support.TtsEngine;
 import com.github.nahratzah.speakerphone.ui.ConfigurableSpeechButton;
+
+import java.util.Locale;
 
 public class BigButtonActivity extends AbstractSpeakerPhoneActivity {
     /**
@@ -70,7 +71,7 @@ public class BigButtonActivity extends AbstractSpeakerPhoneActivity {
 
     private View createProgrammableButton(int row, int column) {
         final ConfigurableSpeechButton button = (ConfigurableSpeechButton) this.getLayoutInflater().inflate(R.layout.activity_big_button__configurable_speak_button, null);
-        button.setKey(String.format("activity_big_button_%d_%d", row, column));
+        button.setKey(String.format(Locale.ROOT, "activity_big_button_%d_%d", row, column));
         return button;
     }
 }
