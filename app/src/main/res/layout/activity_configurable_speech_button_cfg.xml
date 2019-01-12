@@ -15,6 +15,7 @@
 
     <com.github.nahratzah.speakerphone.ui.SPEditText
         android:id="@+id/configurable_speech_button_text"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/specify_the_text_to_be_spoken_when_pressing_this_button"
