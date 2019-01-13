@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:defaultValue="3"
+        android:digits="0123456789"
+        android:imeOptions="actionDone"
+        android:inputType="number|none"
+        app:key="big_buttons_num_columns"
+        app:title="@string/pref_button_grid_columns" />
+    <EditTextPreference
+        android:defaultValue="5"
+        android:digits="0123456789"
+        android:imeOptions="actionDone"
+        android:inputType="number|none"
+        app:key="big_buttons_num_rows"
+        app:title="@string/pref_button_grid_rows" />
+
+</PreferenceScreen>

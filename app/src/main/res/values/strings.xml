@@ -6,4 +6,6 @@
     <string name="configurable_speech_button_label_hint">Specify a name for the button</string>
     <string name="specify_the_text_to_be_spoken_when_pressing_this_button">Specify the text to be spoken when pressing this button</string>
     <string name="speak_activity_button">Free Form Speaking</string>
+    <string name="pref_button_grid_rows">Button Grid Rows</string>
+    <string name="pref_button_grid_columns">Button Grid Columns</string>
 </resources>

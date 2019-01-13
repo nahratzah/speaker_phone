@@ -48,21 +48,6 @@ public class SpeakActivity extends AbstractSpeakerPhoneActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // action with ID action_refresh was selected
-            case R.id.menu_settings:
-                Toast.makeText(this, "Settings is not implemented.", Toast.LENGTH_SHORT)
-                        .show();
-                return true;
-            default:
-                break;
-        }
-
-        return false;
-    }
-
-    @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         lastSentence = savedInstanceState.getString(BUNDLE_LAST_SENTENCE);

@@ -1,10 +1,14 @@
 package com.github.nahratzah.speakerphone;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.GridLayout.LayoutParams;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.nahratzah.speakerphone.support.AbstractSpeakerPhoneActivity;
 import com.github.nahratzah.speakerphone.support.TtsEngine;
@@ -19,6 +23,9 @@ public class BigButtonActivity extends AbstractSpeakerPhoneActivity {
     private GridLayout layout;
 
     private void rebuildLayout() {
+        layout.setColumnCount(getIntPrefOrDefault("big_buttons_num_columns", 3));
+        layout.setRowCount(getIntPrefOrDefault("big_buttons_num_rows", 5));
+
         layout.removeAllViews();
         final int numColumns = layout.getColumnCount();
         final int numRows = layout.getRowCount();
