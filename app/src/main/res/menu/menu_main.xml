@@ -8,5 +8,4 @@
         android:title="@string/menu_settings"
         android:visible="false"
         app:showAsAction="ifRoom" />
-
 </menu>

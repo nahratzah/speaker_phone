@@ -2,4 +2,7 @@
     <declare-styleable name="ConfigurableSpeechButton">
         <attr name="key" format="string" />
     </declare-styleable>
+    <declare-styleable name="NumericPreference">
+
+    </declare-styleable>
 </resources>
